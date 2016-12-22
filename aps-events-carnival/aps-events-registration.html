@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+		img{width: 100%;height: auto;}
+		.userImage{max-width: 200px;width: 100%;margin: 0 auto;}
+		.nameCont label{width: 30%;float: left;margin: 7px 0px;}
+	</style>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="formCtrl">
+		<div class="gridContainer container">
+			<div class="registrationContainer">
+				<form>
+					<div class="panel panel-info">
+						<div class="panel-heading text-center">Participant Login details</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-4">
+									<div class="userImage">
+										<img src="../images/aps-quiz/aps-user-image.jpg" />
+									</div>
+								</div>
+								<div class="col-sm-8 nameCont">
+									<div class="form-group">
+										<label >First Name</label>
+										<div class="input-group">		
+																				
+											<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+											<input class="form-control" id="fName" name="fName" type="text"/>	
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="fName">Middle Name</label>
+										<div class="input-group">											
+											<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+											<input class="form-control" id="mName" name="mName" type="text"/>	
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="fName">Last Name</label>
+										<div class="input-group">											
+											<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+											<input class="form-control" id="lName" name="lName" type="text"/>	
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="control-label" for="userID">User ID</label>
+										<div class="input-group">											
+											<div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+											<input class="form-control" id="userID" name="userID" type="text"/>	
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="control-label" for="password">Password</label>
+										<div class="input-group">											
+											<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+											<input class="form-control" id="password" name="password" type="text"/>	
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="conPassword">Confirm Password</label>
+										<div class="input-group">											
+											<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+											<input class="form-control" id="conPassword" name="conPassword" type="text"/>	
+										</div>
+									</div>
+								</div>
+								
+							
+							</div>
+							
+							
+							<div class="form-group">
+								<div class="col-xs-6 ">
+									<div class="input-group text-center">									
+										<button type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span>&nbsp;&nbsp;Log In</button>										
+									</div>
+								</div>
+								<div class="col-xs-6 ">
+									<div class="input-group text-center">									
+										<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;Reset</button>										
+									</div>
+								</div>
+							</div>
+							
+							
+						</div>		
+						
+						<div class="panel-body">
+							<h3 class="text-center text-success"><strong>Create an account</strong></h3>
+							<p class="text-center text-danger">It's free and always will be.</p>
+							<a class="text-center btn btn-info btn-lg text-center register" type="button"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;&nbsp;&nbsp;Register Here</a>												
+						</div>
+					</div>					
+				</form>
+			</div>
+		</div>	 
+	</div>
+
+
+</body>
+</html>

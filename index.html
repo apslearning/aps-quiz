@@ -6,15 +6,64 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+		.loginContainer{max-width:350px; width:100%; margin:0 auto;}
+		.register{width:100%;}
+	</style>
 </head>
 <body>
 	<div ng-app="myApp" ng-controller="formCtrl">
-		<div class="gridContainer">
+		<div class="gridContainer container">
 			<div class="loginContainer">
 				<form>
-					<input type="text" ng-model=""><span class="glyphicon glyphicon-user"></span></input>
-					<input type="password" ng-model=""><span class="glyphicon glyphicon-lock"></span></input>
-					<button ng-click="reset()">RESET</button>
+					<div class="panel panel-info">
+						<div class="panel-heading text-center">User Authentication</div>
+						<div class="panel-body">
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+									<input type="text" class="form-control"/>
+								</div>	
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+									<input type="password" class="form-control"/>
+								</div>	
+							</div>
+							
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon"><span class="glyphicon glyphicon-eye-open"></span></div>
+									<select class="form-control">
+										<option>Participant</option>
+										<option>Admin</option>									
+									</select>
+								</div>
+							</div>	
+							
+							<div class="form-group">
+								<div class="col-xs-6 ">
+									<div class="input-group text-center">									
+										<button type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span>&nbsp;&nbsp;Log In</button>										
+									</div>
+								</div>
+								<div class="col-xs-6 ">
+									<div class="input-group text-center">									
+										<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;Reset</button>										
+									</div>
+								</div>
+							</div>
+							
+							
+						</div>		
+						
+						<div class="panel-body">
+							<h3 class="text-center text-success"><strong>Create an account</strong></h3>
+							<p class="text-center text-danger">It's free and always will be.</p>
+							<a class="text-center btn btn-info btn-lg text-center register" type="button"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;&nbsp;&nbsp;Register Here</a>												
+						</div>
+					</div>					
 				</form>
 			</div>
 		</div>	 
