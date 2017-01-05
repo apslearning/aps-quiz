@@ -6,38 +6,43 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="javascript/quiz.angular.js"></script>
 	<style>
 		.loginContainer{max-width:350px; width:100%; margin:0 auto;}
 		.register{width:100%;}
+		.inputError{color: red;}
 	</style>
 </head>
 <body>
-	<div ng-app="myApp" ng-controller="formCtrl">
+	<div ng-app="myApp" ng-controller="myController">
 		<div class="gridContainer container">
 			<div class="loginContainer">
-				<form>
+				<form name="login" ng-submit="validate(user);">
 					<div class="panel panel-info">
 						<div class="panel-heading text-center">User Authentication</div>
 						<div class="panel-body">
 							<div class="form-group">
-								<div class="input-group">
+								<span class="inputError" ng-show="login.userid.$touched && login.userid.$invalid">User ID must be between 8 to 10 characters.</span>
+								<div class="input-group">									
 									<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-									<input type="text" class="form-control"/>
+									<input type="text" name="userid" ng-model="user.userid" class="form-control" placeholder="User ID" required pattern=".{8,30}"/>									
 								</div>	
 							</div>
 							<div class="form-group">
+								<span class="inputError" ng-show="login.password.$touched && login.password.$invalid">Password must be between 10 to 20 characters.</span>
 								<div class="input-group">
 									<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-									<input type="password" class="form-control"/>
+									<input type="password" class="form-control" name="password" ng-model="user.password" placeholder="Password" required pattern=".{10,20}"/>
 								</div>	
 							</div>
 							
 							<div class="form-group">
 								<div class="input-group">
 									<div class="input-group-addon"><span class="glyphicon glyphicon-eye-open"></span></div>
-									<select class="form-control">
+									<select class="form-control" name="user.usertype" ng-model="user.usertype" ng-init="user.usertype='Participant'">
 										<option>Participant</option>
-										<option>Admin</option>									
+										<option>Admin</option>	
+										<option>Super Admin</option>								
 									</select>
 								</div>
 							</div>	
@@ -45,19 +50,23 @@
 							<div class="form-group">
 								<div class="col-xs-6 ">
 									<div class="input-group text-center">									
-										<button type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span>&nbsp;&nbsp;Log In</button>										
+										<button type="submit" class="btn btn-success" ng-disabled="login.$invalid"><span class="glyphicon glyphicon-save"></span>&nbsp;&nbsp;Log In</button>										
 									</div>
 								</div>
 								<div class="col-xs-6 ">
 									<div class="input-group text-center">									
-										<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;Reset</button>										
+										<button type="button" class="btn btn-danger" ng-click="resetValidate(user);"><span class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;Reset</button>										
 									</div>
 								</div>
-							</div>
-							
+							</div>							
 							
 						</div>		
-						
+						<table>
+							  <tr ng-repeat="x in names">
+							    <td>{{ x.Name }}</td>
+							    <td>{{ x.Country }}</td>
+							  </tr>
+						</table>
 						<div class="panel-body">
 							<h3 class="text-center text-success"><strong>Create an account</strong></h3>
 							<p class="text-center text-danger">It's free and always will be.</p>
@@ -68,17 +77,5 @@
 			</div>
 		</div>	 
 	</div>
-
-	<script>
-		var app = angular.module('myApp', []);
-		app.controller('formCtrl', function($scope) {
-			$scope.master = {firstName:"John", lastName:"Doe"};
-			$scope.reset = function() {
-				$scope.user = angular.copy($scope.master);
-			};
-			$scope.reset();
-		});
-	</script>
-
 </body>
 </html>
