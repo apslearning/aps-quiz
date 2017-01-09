@@ -14,32 +14,32 @@
 	</style>
 </head>
 <body>
-	<div ng-app="myApp" ng-controller="myController">
+	<div data-ng-app="myApp" data-ng-controller="myController">
 		<div class="gridContainer container">
 			<div class="loginContainer">
-				<form name="login" ng-submit="validate(user);">
+				<form name="login" data-ng-submit="validate(user);">
 					<div class="panel panel-info">
 						<div class="panel-heading text-center">User Authentication</div>
 						<div class="panel-body">
 							<div class="form-group">
-								<span class="inputError" ng-show="login.userid.$touched && login.userid.$invalid">User ID must be between 8 to 10 characters.</span>
+								<span class="inputError" data-ng-show="login.userid.$touched && login.userid.$invalid">User ID must be between 8 to 10 characters.</span>
 								<div class="input-group">									
 									<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-									<input type="text" name="userid" ng-model="user.userid" class="form-control" placeholder="User ID" required pattern=".{8,30}"/>									
+									<input type="text" name="userid" data-ng-model="user.userid" class="form-control" placeholder="User ID" required pattern=".{8,30}"/>									
 								</div>	
 							</div>
 							<div class="form-group">
-								<span class="inputError" ng-show="login.password.$touched && login.password.$invalid">Password must be between 10 to 20 characters.</span>
+								<span class="inputError" data-ng-show="login.password.$touched && login.password.$invalid">Password must be between 10 to 20 characters.</span>
 								<div class="input-group">
 									<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-									<input type="password" class="form-control" name="password" ng-model="user.password" placeholder="Password" required pattern=".{10,20}"/>
+									<input type="password" class="form-control" name="password" data-ng-model="user.password" placeholder="Password" required pattern=".{10,20}"/>
 								</div>	
 							</div>
 							
 							<div class="form-group">
 								<div class="input-group">
 									<div class="input-group-addon"><span class="glyphicon glyphicon-eye-open"></span></div>
-									<select class="form-control" name="user.usertype" ng-model="user.usertype" ng-init="user.usertype='Participant'">
+									<select class="form-control" name="user.usertype" data-ng-model="user.usertype" data-ng-init="user.usertype='Participant'">
 										<option>Participant</option>
 										<option>Admin</option>	
 										<option>Super Admin</option>								
@@ -50,19 +50,14 @@
 							<div class="form-group">
 								<div class="col-xs-6 ">
 									<div class="input-group text-center">									
-										<button type="submit" class="btn btn-success" ng-disabled="login.$invalid"><span class="glyphicon glyphicon-save"></span>&nbsp;&nbsp;Log In</button>										
-									</div>
-								</div>
-								<div class="col-xs-6 ">
-									<div class="input-group text-center">									
-										<button type="button" class="btn btn-danger" ng-click="resetValidate(user);"><span class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;Reset</button>										
+										<button type="submit" class="btn btn-success" data-ng-disabled="login.$invalid"><span class="glyphicon glyphicon-save"></span>&nbsp;&nbsp;Log In</button>										
 									</div>
 								</div>
 							</div>							
 							
 						</div>		
 						<table>
-							  <tr ng-repeat="x in names">
+							  <tr data-ng-repeat="x in names">
 							    <td>{{ x.Name }}</td>
 							    <td>{{ x.Country }}</td>
 							  </tr>

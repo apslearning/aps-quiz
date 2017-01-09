@@ -6,17 +6,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../javascript/quiz.angular.js"></script>
 	<style>
-		img{width: 100%;height: auto;}
-		.userImage{max-width: 200px;width: 100%;margin: 0 auto;}
-		.nameCont label{width: 30%;float: left;margin: 7px 0px;}
+		.loginContainer{max-width:350px; width:100%; margin:0 auto;}
+		.register{width:100%;}
+		.inputError{color: red;}
 	</style>
 </head>
 <body>
-	<div ng-app="myApp" ng-controller="formCtrl">
+	<div data-ng-app="myApp" data-ng-controller="myController">
 		<div class="gridContainer container">
 			<div class="registrationContainer">
-				<form>
+				<form name="userReg" data-ng-submit="userRegistration(userReg);">
 					<div class="panel panel-info">
 						<div class="panel-heading text-center">Participant Login details</div>
 						<div class="panel-body">
@@ -29,82 +30,60 @@
 								<div class="col-sm-8 nameCont">
 									<div class="form-group">
 										<label >First Name</label>
-										<div class="input-group">		
-																				
+										<span class="inputError" data-ng-show="userReg.fName.$touched && userReg.fName.$invalid">Please provide valid First Name.</span>
+										<div class="input-group">																				
 											<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-											<input class="form-control" id="fName" name="fName" type="text"/>	
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label" for="fName">Middle Name</label>
-										<div class="input-group">											
-											<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-											<input class="form-control" id="mName" name="mName" type="text"/>	
+											<input class="form-control" type="text" id="fName" name="fName" data-ng-model="reguser.fName" placeholder="First Name" required/>	
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="control-label" for="fName">Last Name</label>
+										<span class="inputError" data-ng-show="userReg.lName.$touched && userReg.lName.$invalid">Please provide valid Last Name.</span>
 										<div class="input-group">											
 											<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-											<input class="form-control" id="lName" name="lName" type="text"/>	
+											<input class="form-control" type="text" id="lName" name="lName"  data-ng-model="reguser.lName" placeholder="Last Name" required/>	
 										</div>
 									</div>
 									
 									<div class="form-group">
 										<label class="control-label" for="userID">User ID</label>
+										<span class="inputError" data-ng-show="userReg.userID.$touched && userReg.userID.$invalid">User ID must be between 8 to 10 characters.</span>
 										<div class="input-group">											
 											<div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-											<input class="form-control" id="userID" name="userID" type="text"/>	
+											<input class="form-control" id="userID" type="text" name="userID" data-ng-model="reguser.userID" placeholder="User ID" required pattern=".{8,30}"/>	
 										</div>
 									</div>
 									
 									<div class="form-group">
 										<label class="control-label" for="password">Password</label>
+										<span class="inputError" data-ng-show="userReg.password.$touched && userReg.password.$invalid">Password must be between 10 to 20 characters.</span>
 										<div class="input-group">											
 											<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-											<input class="form-control" id="password" name="password" type="text"/>	
+											<input class="form-control" id="password" type="password" name="password" data-ng-model="reguser.password" placeholder="Password" required pattern=".{10,20}"/>	
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="control-label" for="conPassword">Confirm Password</label>
+										<span class="inputError" data-ng-show="userReg.conPassword.$touched && userReg.conPassword.$invalid">Your password should match.</span>
 										<div class="input-group">											
 											<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-											<input class="form-control" id="conPassword" name="conPassword" type="text"/>	
+											<input class="form-control" id="conPassword" type="password" name="conPassword" data-ng-model="reguser.conPassword" placeholder="Confirm Password" required pattern=".{10,20}"/>	
 										</div>
 									</div>
-								</div>
-								
-							
-							</div>
-							
-							
-							<div class="form-group">
-								<div class="col-xs-6 ">
-									<div class="input-group text-center">									
-										<button type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span>&nbsp;&nbsp;Log In</button>										
-									</div>
-								</div>
-								<div class="col-xs-6 ">
-									<div class="input-group text-center">									
-										<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;Reset</button>										
+									<div class="form-group">
+										<div class="col-xs-6 ">
+											<div class="input-group text-center">									
+												<button type="submit" class="btn btn-success" data-ng-disabled="userReg.$invalid"><span class="glyphicon glyphicon-save"></span>&nbsp;&nbsp;Create an Account</button>										
+											</div>
+										</div>										
 									</div>
 								</div>
 							</div>
-							
-							
-						</div>		
-						
-						<div class="panel-body">
-							<h3 class="text-center text-success"><strong>Create an account</strong></h3>
-							<p class="text-center text-danger">It's free and always will be.</p>
-							<a class="text-center btn btn-info btn-lg text-center register" type="button"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;&nbsp;&nbsp;Register Here</a>												
 						</div>
 					</div>					
 				</form>
 			</div>
 		</div>	 
 	</div>
-
-
 </body>
 </html>
