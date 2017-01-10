@@ -17,7 +17,7 @@
 	<div data-ng-app="myApp" data-ng-controller="myController">
 		<div class="gridContainer container">
 			<div class="registrationContainer">
-				<form name="userReg" data-ng-submit="userRegistration(userReg);">
+				<form name="userReg" data-ng-submit="userRegistration(reguser);">
 					<div class="panel panel-info">
 						<div class="panel-heading text-center">Participant Login details</div>
 						<div class="panel-body">
@@ -64,7 +64,7 @@
 									</div>
 									<div class="form-group">
 										<label class="control-label" for="conPassword">Confirm Password</label>
-										<span class="inputError" data-ng-show="userReg.conPassword.$touched && userReg.conPassword.$invalid">Your password should match.</span>
+										<span class="inputError" data-ng-show="(userReg.conPassword.$touched && userReg.conPassword.$invalid) && (userReg.Password != userReg.conPassword)">Your password should match.</span>
 										<div class="input-group">											
 											<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
 											<input class="form-control" id="conPassword" type="password" name="conPassword" data-ng-model="reguser.conPassword" placeholder="Confirm Password" required pattern=".{10,20}"/>	

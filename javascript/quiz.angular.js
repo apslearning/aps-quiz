@@ -1,6 +1,3 @@
-$(document).ready(function(){
-	alert("hi");	
-});
 var app = angular.module("myApp", []);
 
 app.controller("myController", function($scope,$http) {
@@ -12,7 +9,9 @@ app.controller("myController", function($scope,$http) {
 	
 	/* Application Registration functionality */
 	$scope.userRegistration = function(reguser){
-				
+				if(reguser.password!=reguser.conPassword){
+										return false;
+				}
 		
 	}
     
